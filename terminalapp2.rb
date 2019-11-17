@@ -60,13 +60,21 @@ puts pet_types.join("\n")
 
 your_pet_type = gets.chomp.capitalize
 
+your_breed = []
+
+dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
+
+cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
+
     if your_pet_type == 'D'
         your_pet_breed = "Dog"
         Dog.new.image
+        your_breed.push(dog_breed.sample)
         break
     elsif your_pet_type == 'C'
         your_pet_type = "Cat"
         Cat.new.image
+        your_breed.push(cat_breed.sample)
         break
     else
         puts " "
@@ -120,8 +128,15 @@ while pet_health > 0 do
             pet_hunger = pet_hunger + 5
         end
     elsif owner_choice == "T"
-        puts "Your #{your_pet_name} is so cute!"
-        puts "Your pet's stats:"
+        puts "     PET STATS"
+        if your_pet_breed == "Dog"
+            puts Dog.new.image
+        else
+            puts Cat.new.image
+        end
+        puts "\n"
+        puts "Name: #{your_pet_name}"
+        puts "Breed: #{your_breed}"
         puts "Health: #{pet_health}"
         puts "Hunger: #{pet_hunger}"
         puts "Love: #{pet_love}"
