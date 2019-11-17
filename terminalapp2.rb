@@ -4,20 +4,13 @@
 
 require_relative "Classes2/Dog.rb"
 require_relative "Classes2/Cat.rb"
+require_relative "Classes2/Pet.rb"
 require "colorize"
 
 
-def new_day #create room
+def new_day #enters new day
     "It's a new day!"
     
-end
-
-def pet_poop?
-    if roll_dice(2, 6) >= 9
-        true
-    else
-        false
-    end
 end
 
 def roll_dice (number_of_dice, dice_size)
@@ -26,6 +19,14 @@ def roll_dice (number_of_dice, dice_size)
         total = total + rand(dice_size) + 1
     end
     return total
+end
+
+def pet_poop?
+    if roll_dice(2, 6) >= 9
+        true
+    else
+        false
+    end
 end
 
 def pet_plays?
@@ -43,45 +44,13 @@ pet_hunger = 50
 pet_poop = false
 pet_dirty = false
 current_day = new_day
-pet_types = ["(D)og", "(C)at"]
-
-
 
 puts "Good day!"
 puts " "
 puts "Let's adopt a pet!"
 puts " "
 
-loop do
-
-puts "What type of pet would you like?"
-puts " "
-puts pet_types.join("\n")
-
-your_pet_type = gets.chomp.capitalize
-
-your_breed = []
-
-dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
-
-cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
-
-    if your_pet_type == 'D'
-        your_pet_breed = "Dog"
-        Dog.new.image
-        your_breed.push(dog_breed.sample)
-        break
-    elsif your_pet_type == 'C'
-        your_pet_type = "Cat"
-        Cat.new.image
-        your_breed.push(cat_breed.sample)
-        break
-    else
-        puts " "
-        puts "We don't have any of those."
-        puts " "
-    end
-end
+Pet.new.pet_chooser
 
 puts "What is your pets name?"
 your_pet_name = gets.chomp.capitalize
@@ -129,11 +98,6 @@ while pet_health > 0 do
         end
     elsif owner_choice == "T"
         puts "     PET STATS"
-        if your_pet_breed == "Dog"
-            puts Dog.new.image
-        else
-            puts Cat.new.image
-        end
         puts "\n"
         puts "Name: #{your_pet_name}"
         puts "Breed: #{your_breed}"
