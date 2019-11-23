@@ -1,18 +1,19 @@
 
 #dog class
 
+require_relative "Pet.rb" 
 require "colorize"
 
-class Dog
+class Dog < Pet
     
     def image
-        puts "/^-----^\\\ "
-        puts "V  o o  V"
-        puts " |  Y  |     -Woof!"
-        puts "  \\\ - /"
-        puts "  / - \\\ "
-        puts "  |    \\\ "
-        puts "  |     \\     )"
-        puts "  || (___\\\===="
+        puts "/^-----^\\\ ".colorize(:black).on_white
+        puts "V  o o  V".colorize(:black).on_white
+        puts " |  Y  |     -Woof!".colorize(:black).on_white
+        puts "  \\\ - /".colorize(:black).on_white
+        puts "  / - \\\ ".colorize(:black).on_white
+        puts "  |    \\\ ".colorize(:black).on_white
+        puts "  |     \\     )".colorize(:black).on_white
+        puts "  || (___\\\====".colorize(:black).on_white
     end
 end

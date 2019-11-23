@@ -1,9 +1,9 @@
 #Cat class
 
-
+require_relative "Pet.rb" 
 require "colorize"
 
-class Cat
+class Cat < Pet
 
     def image
         puts "    /\\\___/\\\ ".colorize(:yellow).on_black
