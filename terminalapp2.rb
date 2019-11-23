@@ -7,6 +7,15 @@ require_relative "Classes2/Cat.rb"
 require "colorize"
 
 
+pet_health = 75
+pet_love = 99
+pet_hunger = 50
+pet_poop = false
+pet_dirty = false
+pet_types = ["(D)og", "(C)at"]
+
+
+
 def new_day #create room
     "It's a new day!"
     
@@ -36,17 +45,6 @@ def pet_plays?
     end
 end
 
-
-pet_health = 75
-pet_love = 40
-pet_hunger = 50
-pet_poop = false
-pet_dirty = false
-current_day = new_day
-pet_types = ["(D)og", "(C)at"]
-
-
-
 puts "Good day!"
 puts " "
 puts "Let's adopt a pet!"
@@ -59,22 +57,22 @@ puts " "
 puts pet_types.join("\n")
 
 your_pet_type = gets.chomp.capitalize
-
+current_day = new_day
 your_breed = []
 
-dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
+# dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
 
-cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
+# cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
 
     if your_pet_type == 'D'
         your_pet_breed = "Dog"
         Dog.new.image
-        your_breed.push(dog_breed.sample)
+        # your_breed.push(dog_breed.sample)
         break
     elsif your_pet_type == 'C'
         your_pet_type = "Cat"
         Cat.new.image
-        your_breed.push(cat_breed.sample)
+        # your_breed.push(cat_breed.sample)
         break
     else
         puts " "
@@ -100,7 +98,7 @@ while pet_health > 0 do
     print "What will you do?\n #{actions.join("\n ")}\n "
 
     owner_choice = gets.chomp.capitalize
-    if pet_poop and pet_plays?
+    if pet_poop && pet_plays == true
         pet_health = pet_health - 1
         puts "No!!! #{your_pet_name} ran through the poop and is spreading it everywhere!"
     end
@@ -191,27 +189,42 @@ while pet_health > 0 do
     puts " "
 
 
-
+    if pet_love > 100
+        puts " "
+        puts "Wow! #{your_pet_name} really loves you!"
+        puts " "
+        puts " "
+        puts " "
+        puts "Congratulations! You're the number one pet owner!"
+        puts "   .-=========-."
+        puts "   \\\'-=======-'/"
+        puts "   _|   .=.   |_ "
+        puts "  ((|  {{1}}  |)) "
+        puts "   \\\|   /|\\\   |/"
+        puts "    \\\__ '`' __/ "
+        puts "      _`) (`_ "
+        puts "    _/_______\\\_"
+        puts "   /___________\\\ "
+        puts " "
+        puts " "
+        puts " "
+    else
+    end
+    
 
 
 
 
 end
-if pet_health > 0
-    puts "Your #{your_pet_name} is so cute!"
-    puts "Your pet's stats:"
-    puts "Health: #{pet_health}"
-    puts "Hunger: #{pet_hunger}"
-    puts "Love: #{pet_love}"
-    puts "\n"
-else
+if pet_health > 0 
+else 
     puts "OH NO!!!!"
     puts "Your pet has died!"
     puts "Your pet's stats:"
     puts "Health: #{pet_health}"
-    puts "Hunger: #{pet_hunger}"
     puts "Love: #{pet_love}"
     puts "\n"
 end
+
 
 
