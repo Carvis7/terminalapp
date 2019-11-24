@@ -8,15 +8,16 @@ require "colorize"
 
 
 pet_health = 75
-pet_love = 99
+pet_love = 40
 pet_hunger = 50
 pet_poop = false
 pet_dirty = false
 pet_types = ["(D)og", "(C)at"]
+your_breed = nil
 
 
-
-def new_day #create room
+def new_day #Creates a new day, thus changing pet variables
+            #Would like to automate this and link with real-time.
     "It's a new day!"
     
 end
@@ -50,7 +51,7 @@ puts " "
 puts "Let's adopt a pet!"
 puts " "
 
-loop do
+# loop do
 
 puts "What type of pet would you like?"
 puts " "
@@ -58,31 +59,46 @@ puts pet_types.join("\n")
 
 your_pet_type = gets.chomp.capitalize
 current_day = new_day
-your_breed = []
+# your_breed = []
 
-# dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
+dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
 
-# cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
+cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
 
-    if your_pet_type == 'D'
-        your_pet_breed = "Dog"
-        Dog.new.image
-        # your_breed.push(dog_breed.sample)
+
+#trying to make your_pet_type loop until a proper
+#answer is recieved from user input
+
+#Need to find a way to restrict user input rather than using a loop.
+#As I can't figure out how to pull the breed variable from the loop.
+
+#FML
+
+# param[your_pet_type]=='D'||'C'
+
+
+loop do
+    if
+        your_pet_type == 'D'
+
+        your_breed = dog_breed.sample 
+        puts Dog.new.image
         break
-    elsif your_pet_type == 'C'
-        your_pet_type = "Cat"
-        Cat.new.image
-        # your_breed.push(cat_breed.sample)
+    elsif
+        your_pet_type == 'C'
+
+        your_breed = cat_breed.sample
+        puts Cat.new.image
         break
     else
-        puts " "
-        puts "We don't have any of those."
-        puts " "
+        puts "Please choose a pet that we have available."
+
     end
 end
 
 puts "What is your pets name?"
 your_pet_name = gets.chomp.capitalize
+
 
 
 while pet_health > 0 do 
@@ -129,6 +145,7 @@ while pet_health > 0 do
         puts "     PET STATS"
         puts "\n"
         puts "Name: #{your_pet_name}"
+        puts "Breed: #{your_breed}"
         puts "Health: #{pet_health}"
         puts "Hunger: #{pet_hunger}"
         puts "Love: #{pet_love}"
@@ -174,7 +191,6 @@ while pet_health > 0 do
             pet_hunger = pet_hunger - 30
         end
     elsif owner_choice == "S"
-        new_day
         pet_health = pet_health - 20
         pet_hunger = pet_hunger + 20
         pet_dirty = pet_dirty = true
