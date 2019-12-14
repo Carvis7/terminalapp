@@ -7,8 +7,8 @@ require_relative "Classes2/Cat.rb"
 require "colorize"
 
 
-pet_health = 60
-pet_love = 30
+pet_health = 75
+pet_love = 99
 pet_hunger = 50
 pet_poop = false
 pet_dirty = false
@@ -51,33 +51,35 @@ puts "Let's adopt a pet!"
 puts " "
 
 loop do
-    puts "What type of pet would you like?"
-    puts " "
-    puts pet_types.join("\n")
 
-    your_pet_type = gets.chomp.capitalize
+puts "What type of pet would you like?"
+puts " "
+puts pet_types.join("\n")
 
-    # your_breed = []
-    # dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
-    # cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
+your_pet_type = gets.chomp.capitalize
+current_day = new_day
+your_breed = []
+
+# dog_breed = ["German Shepherd", "Jack Russell", "Corgi", "Great Dane", "Dalmatian", "Rottweiler", "Labrador", "Poodle"]
+
+# cat_breed = ["Siamese", "Ragdoll", "Sphinx", "Blue Russian"]
 
     if your_pet_type == 'D'
-            your_pet_breed = "Dog"
-            Dog.new.image
-            # your_breed.push(dog_breed.sample)
-            break
+        your_pet_breed = "Dog"
+        Dog.new.image
+        # your_breed.push(dog_breed.sample)
+        break
     elsif your_pet_type == 'C'
-            your_pet_type = "Cat"
-            Cat.new.image
-            # your_breed.push(cat_breed.sample)
-            break
+        your_pet_type = "Cat"
+        Cat.new.image
+        # your_breed.push(cat_breed.sample)
+        break
     else
-            puts " "
-            puts "We don't have any of those."
-            puts " "
+        puts " "
+        puts "We don't have any of those."
+        puts " "
     end
 end
-    
 need_name = true
 
 while need_name
@@ -135,7 +137,6 @@ while pet_health > 0 do
         puts "     PET STATS"
         puts "\n"
         puts "Name: #{your_pet_name}"
-        # puts "Breed: #{your_breed}"
         puts "Health: #{pet_health}"
         puts "Hunger: #{pet_hunger}"
         puts "Love: #{pet_love}"
